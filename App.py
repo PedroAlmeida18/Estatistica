@@ -34,3 +34,21 @@ print('De %s até %s anos ' % (dados.Idade.min(), dados.Idade.max()))
 
 #Variáveis quantitativas continuas
 print('De %s até %s metros' % (dados.Altura.min(), dados.Altura.max()))
+
+#Distribuição de Frequências para variaveis qualitativas
+#Obs: Foram considerados somente os regristros das pessoas de referência de cada domicílio, 0 para Masc e 1 para Fem
+dados['Sexo'].value_counts()
+
+#Colocar em percentual
+dados['Sexo'].value_counts(normalize=True) *100
+
+frequencia = dados['Sexo'].value_counts()
+percentual = dados['Sexo'].value_counts(normalize=True) *100
+#CRIAÇÃO DE UMA TABELA PARA MOSTRARA MEHLOR ESSES DADOS
+dis_freq_qualitativas = pd.DataFrame({'Frequência ' : frequencia, 'Porcentagem (%)' : percentual})
+dis_freq_qualitativas
+
+#Renomear para saber Masculino e Feminino
+dis_freq_qualitativas.rename(index={0:'Masculino ', 1:'Feminino'}, inplace=True ) # Salvar essa alteração
+dis_freq_qualitativas.rename_axis('Sexo', axis='columns', inplace = True)
+dis_freq_qualitativas
