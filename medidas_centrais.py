@@ -85,3 +85,55 @@ dados.Renda.median()
 
 #Outra maneira
 dados.Renda.quantile()
+
+#MODA
+df
+
+df.mode() #Obter moda com valores qualitativas
+
+exemplo =pd.Series([1,2,2,3,4,4,5,6,6])
+exemplo.mode()
+
+#Moda com dataset
+dados.Altura.mode()
+
+#Relação entre média, Mediana e Moda
+ax=sns.displot(dados.query('Renda<20000').Renda)
+ax.figure.set_size_inches(15,6)
+ax
+
+moda = dados.Renda.mode()[0]
+print(moda)
+mediana = dados.Renda.median()
+print(mediana)
+media = dados.Renda.mean()
+print(media)
+
+moda < mediana < media
+
+#Com o dado de Altura
+ax2=sns.displot(dados.Altura)
+ax2.figure.set_size_inches(15,6)
+ax2
+
+moda = dados.Altura.mode()
+print(moda)
+
+mediana = dados.Altura.median()
+print(mediana)
+media = dados.Altura.mean()
+print(media)
+
+#Ano de estudo
+
+ax=sns.displot(dados['Anos de Estudo'], bins = 17)
+ax.figure.set_size_inches(15,6)
+ax
+
+moda = dados['Anos de Estudo'].mode()[0]
+print(moda)
+
+mediana = dados['Anos de Estudo'].median()
+print(mediana)
+media = dados['Anos de Estudo'].mean()
+print(media)
