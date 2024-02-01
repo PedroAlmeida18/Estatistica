@@ -10,9 +10,7 @@ Original file is located at
 import pandas as pd
 import numpy as np
 import seaborn as sns
-import scipy
-
-dados = pd.read_csv('dados.csv') # Leitura dos dados
+dados = pd.read_csv('./Estatistica/dados.csv')  # Leitura dos dados
 type(dados)
 dados.head() #Mostrar os primeiros dados
 

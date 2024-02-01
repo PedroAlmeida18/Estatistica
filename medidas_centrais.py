@@ -33,3 +33,55 @@ dados.Renda.mean()
 renda_sexo = dados.groupby(['Sexo'])['Renda'].mean()
 renda_sexo.rename(index={0:'Masculino ', 1:'Feminino'}, inplace=True )
 renda_sexo
+
+#Mediana - Número impar
+notas_Pedro = df.Pedro
+notas_Pedro
+
+notas_Pedro = notas_Pedro.sort_values() #Ordenar os valores
+notas_Pedro
+
+notas_Pedro = notas_Pedro.reset_index()
+notas_Pedro
+
+n = notas_Pedro.shape[0]
+n
+
+elemento_md=(n+1)/2
+elemento_md
+
+notas_Pedro.loc[elemento_md-1]
+
+#Uso do pandas
+notas_Pedro.median()
+
+#Número Par - Mediana
+notas_Victor = df.Victor.sample(6,random_state=101)
+notas_Victor
+
+notas_Victor = notas_Victor.sort_values()
+notas_Victor
+
+notas_Victor = notas_Victor.reset_index()
+notas_Victor
+
+n = notas_Victor.shape[0]
+n
+
+mediana_parte1 = notas_Victor.iloc[int(n/2)]
+valor1 = mediana_parte1.iloc[1]
+
+mediana_parte2 = notas_Victor.iloc[int((n/2)-1)]
+valor2 = mediana_parte2.iloc[1]
+valor2
+
+mediana_par = (valor1 + valor2)/2
+mediana_par
+
+notas_Victor.median()
+
+#Pegando a mediana do dataset
+dados.Renda.median()
+
+#Outra maneira
+dados.Renda.quantile()
