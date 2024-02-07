@@ -35,3 +35,37 @@ ax.set_title('Distribuição de Frequencia Acumulada ', fontsize=18)
 ax.set_ylable('Acumaldo', fontize=14)
 ax.set_xlable('Anos', fontize=14)
 
+#Boxplot :
+ax= sns.boxplot(x='Altura', data=dados,orient='h')
+ax.figure.set_size_inches(12,4)
+ax.set_title('Altura', fontsize=18)
+ax.set_xlabel('Metros', fontsize=14)
+ax
+
+#Colocando outra variavel para avaliar
+ax= sns.boxplot(x='Altura',y='Sexo' , data=dados , orient='h')
+ax.figure.set_size_inches(12,4)
+ax.set_title('Altura', fontsize=18)
+ax.set_xlabel('Metros', fontsize=14)
+ax
+
+#Assimetria da difernça, pois o bloxplot puxa para a direita
+ax= sns.boxplot(x='Renda', data=dados.query('Renda<10000'),orient='h') #Seprando uma faixa para avaliar
+ax.figure.set_size_inches(12,4)
+ax.set_title('Renda', fontsize=18)
+ax.set_xlabel('Reais $', fontsize=14)
+ax
+
+#Avaliar a difernça entre os sexos
+ax= sns.boxplot(x='Renda', y = 'Sexo',  data=dados.query('Renda<10000'),orient='h') #Seprando uma faixa para avaliar
+ax.figure.set_size_inches(12,4)
+ax.set_title('Renda', fontsize=18)
+ax.set_xlabel('Reais $', fontsize=14)
+ax
+
+#Anos de estudos
+ax= sns.boxplot(x='Anos de Estudo', y = 'Sexo', data=dados , orient='h')
+ax.figure.set_size_inches(12,4)
+ax.set_title('Anos de Estudo', fontsize=18)
+ax.set_xlabel('Anos', fontsize=14)
+ax
