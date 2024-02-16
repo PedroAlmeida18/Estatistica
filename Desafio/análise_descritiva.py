@@ -140,6 +140,7 @@ Altura do morador em metros.
 import pandas as pd
 import numpy as np
 import seaborn as sns
+import matplotlib.pyplot as plt
 
 """### Importe o dataset e armazene o conteúdo em uma DataFrame"""
 
@@ -199,23 +200,46 @@ percentual_Renda
 dist_freq=pd.DataFrame({'Frequência':frequencia_Renda, 'Porcentagem ': percentual_Renda})
 dist_freq
 
+n = dados.shape[0]
+print(n)
+k = 1+(10/3)*np.log10(n)
+print(k) #Número de classes ideal para esses dados
+k = int(k.round(0))
+print(k)
+
+
+
 """### Construa um gráfico de barras para visualizar as informações da tabela de frequências acima"""
 
+dist_freq
+plt.bar(labels, dist_freq['Frequência'])
+plt.title("Gráfico de barras para Frequências")
+plt.xlabel('Classe econômica')
+plt.ylabel('Frequência')
 
+plt.show()
 
 """> ### Conclusões
 
-Escreva suas conclusões aqui...
+Foi uma ativadade interessante, tive algumas dificuldades no gráfico. Quanto a análise é possível notar que a classe econômica com mais pessoas são E e D e a menor B e A, isso traz uma reflexão sobre a desiguldade do Brasil naquele período de 2015.
 
 ### Crie um histograma para as variáveis QUANTITATIVAS de nosso dataset
 #### <font color='blue'>Descreva os pontos mais relevantes que você observa nos gráficos (assimetrias e seus tipos, possíveis causas para determinados comportamentos etc.)</font>
 """
 
+ax= sns.displot(dados.Altura,kde=False)
+ax.figure.set_size_inches(12,6)
+#ax.title('Histograma de frequencias de alturas', fontsize=20)
+#ax.set_xlabel('Metros', fontsize=14)
+ax
 
+ax2= sns.displot(dados.Idade,kde=False)
+ax2.figure.set_size_inches(12,6)
+ax
 
-
-
-
+ax2= sns.displot(dados.Renda<20000)
+ax2.figure.set_size_inches(12,6)
+ax
 
 """> ### Conclusões
 
@@ -224,7 +248,11 @@ Escreva suas conclusões aqui...
 ### Para a variável RENDA, construa um histograma somente com as informações das pessoas com rendimento até R$ 20.000,00
 """
 
+df_filtrado = dados.loc[dados['Renda'] > 20000]
 
+ax2= sns.displot(df_filtrado)
+ax2.figure.set_size_inches(12,6)
+ax
 
 """### Construa uma tabela de frequências e uma com os percentuais do cruzando das variáveis SEXO e COR
 #### <font color='blue'>Avalie o resultado da tabela e escreva suas principais conclusões</font>
